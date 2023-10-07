@@ -27,56 +27,55 @@
     <input type="submit" name="boton1" value="Suma">
     <input type="submit" name="boton2" value="Resta">
     <input type="submit" name="boton3" value="Multiplicación">
+    <input type="submit" name="boton4" value="División">
 </form>
 
 <?php
 //Llamar a la función
 
-include('Suma.php');
-include('Resta.php');
-include('Multiplicacion.php');
+include('Operaciones.php');
 
-//Crear un objeto ; Instanciar
+//Definir variables
 
-$cargar1=new Suma();
-$cargar2=new Resta();
-$cargar3=new Multiplicacion();
+$valor1=$_POST['numero1'];
+$valor2=$_POST['numero2'];
 
-//Aginar parámetros a atributos mediante un set
+//Crear un objeto ; Instanciar un atributo
+
+$suma=new Suma();
+$resta=new Resta();
+$multiplicacion=new Multiplicacion();
+$division=new Division();
+
+echo '<hr>';
 
 //SUMA
 
-$cargar1->setValor1($_POST['numero1']);
-$cargar1->setValor2($_POST['numero2']);
-$cargar2->setValor1($_POST['numero1']);
-$cargar2->setValor2($_POST['numero2']);
-$cargar3->setValor1($_POST['numero1']);
-$cargar3->setValor2($_POST['numero2']);
-
-echo '<hr>';
 if(isset($_POST['boton1']))
 {
-    $cargar1->funcionBoton1($cargar1);
+    echo $suma->operacion($valor1,$valor2);
 }
 
 //RESTA
 
-
-
 elseif(isset($_POST['boton2']))
 {
-    $cargar2->funcionBoton2($cargar2);
+    echo $resta->operacion($valor1,$valor2);
 } 
 
 //MULTIPLICACIÓN
 
-
-
 elseif(isset($_POST['boton3']))
 {
-    $cargar3->funcionBoton3($cargar3);
+    echo $multiplicacion->operacion($valor1,$valor2);
 } 
 
+//DIVISIÓN
+
+elseif(isset($_POST['boton4']))
+{
+    echo $division->operacion($valor1,$valor2);
+}
 ?>
 
 </body>
